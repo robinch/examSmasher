@@ -39,19 +39,5 @@
 
  			});
  		},
-
- 		getNotes: function (req, res) {
- 			Course.find({
- 				courseId: req.param('courseId')
- 			})
- 			.exec( function (err, course) {
- 				if(err) {
- 					console.log(err);
- 					return res.negotioate(err);
- 				}
-
- 				return res.json(course.notes);
- 			})
- 		}
  };
 

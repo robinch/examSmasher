@@ -49,7 +49,9 @@ module.exports.routes = {
   'PUT /login': 'UserController.login',
   'GET /logout': 'UserController.logout',
   'POST /addCourse': 'CourseController.add',
-  'GET /getNotes': 'CourseController.getNotes',
+  'POST /getNotes': 'NoteController.getNotes',
+  'POST /addNote': 'NoteController.add',
+  'POST /deleteNote' : 'NoteController.deleteNode',
 
   // '/': {
   //   view: 'homepage'

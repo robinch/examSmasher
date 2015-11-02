@@ -24,6 +24,10 @@ module.exports = {
 
     course: {
     	model: 'Course'
+    },
+    
+    deleted: {
+      type: 'boolean'
     }
   }
 };

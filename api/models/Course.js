@@ -8,11 +8,11 @@
 module.exports = {
 
   attributes: {
-
   	// the course code. ex DD143X
     courseId: {
       type: 'string',
       required: true,
+      primaryKey: true,
       unique: true,
     },
 

@@ -94,19 +94,20 @@
           </div>
           <div class="meta">
             <div class="page">
-              {{me.name}}
+              {{currentCourse.name}}
             </div>
             <div class="breadcrumb-links">
-              Beat those courses
+              {{currentCourse.description}}
             </div>
           </div>
         </div>
       </div>
       <!-- End Header Bar -->
 
+    <!-- The main page-->
     <div class="note-wrapper">
     <form class="note-form">
-      <input type="text" ng-model="formNotesText" rows="5">
+      <input type="text" class="form-control" ng-model="formNotesText" rows="5">
       <button class="btn" ng-click="addNote()"><i class="icon-plus"></i>Add</button>
     </form>
         <ul class="note-list">
@@ -115,7 +116,9 @@
         <h1>{{currentCourse.name}}</h1>
           
         </div>
-        <li ng-repeat="note in notes track by $index">{{note.text}}
+        <li ng-repeat="note in notes track by $index">
+          <button class="btn btn-danger" ng-click="deleteNote(note)">Delete</button>
+          <span>{{note.text}}</span>
         </li>
         </ul>
     </div>
