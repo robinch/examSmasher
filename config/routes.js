@@ -52,6 +52,9 @@ module.exports.routes = {
   'POST /getNotes': 'NoteController.getNotes',
   'POST /addNote': 'NoteController.add',
   'POST /deleteNote' : 'NoteController.deleteNode',
+  'POST /addSubscription' : 'SubscriptionController.addSubscription',
+  'GET /getSubscriptions' : 'SubscriptionController.getSubscriptions',
+  'DELETE /deleteSub' : 'SubscriptionController.deleteSub',
 
   // '/': {
   //   view: 'homepage'

@@ -54,6 +54,11 @@ module.exports = {
     notes: {
       collection: 'Note',
       via: 'user'
+    },
+    
+    subscriptions: {
+      collection:'Subscription',
+      via: 'user'
     }
   }
 };

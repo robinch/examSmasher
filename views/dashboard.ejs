@@ -45,10 +45,8 @@
               </div>
               <!-- Text Courses-->
               <h5 class="bright-text">Course name</h5>
-              <div class="control-group form-group col-md-12"
-              ng-class="{'has-error':sideBar.coursId.$invalid &&
-              sideBar.courseId.$dirty}">
-              <input type="text" class="form-control text-rounded" placeholder="e.g. Operating Systems" name="name" ng-model="sidebar.name" required>
+              <div class="control-group form-group col-md-12">
+              <input type="text" class="form-control text-rounded" placeholder="(optional)" name="name" ng-model="sidebar.name">
 
               </div>
               <!-- Add button -->
@@ -71,7 +69,8 @@
         <li class="sidebar-brand">
           <h1>Courses</h1>
         </li>
-        <li ng-repeat="course in courses">
+        <li ng-repeat="course in courses track by $index">
+        <button class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove" ng-click="deleteSub(course)"></i></button>
           <a ng-click="openCourse(course)">{{course.courseId}}</a>
         </li>
 
@@ -94,10 +93,10 @@
           </div>
           <div class="meta">
             <div class="page">
-              {{currentCourse.name}}
+              {{currentCourse.courseId}}
             </div>
             <div class="breadcrumb-links">
-              {{currentCourse.description}}
+              {{currentCourse.name}}
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@
  	add: function (req, res) {
  		Course.findOrCreate({
  			courseId: req.param('courseId'),
- 			name: req.param('name')
+ 			name: req.param('name'),
  		},
  		function( err, newCourse){
  			if(err) {
@@ -19,7 +19,6 @@
 
                 return res.negotiate(err);
  			}
-
  			return res.json({
  				courseId: newCourse.courseId,
  				name: newCourse.name
@@ -32,12 +31,26 @@
  					console.log("err: ", err);
 
  					//TODO add a noCourses res
- 					return res.negotioate(err);
+ 					return res.negotiate(err);
  				}
 
  				return res.json(courses);
 
  			});
  		},
+
+ 		getCourse: function (req, res) {
+ 			Course.find({
+ 				courseId: req.param.req('courseId')
+ 			})
+ 			.exec(function (err, course){
+ 				if(err) {
+ 					console.log(err);
+ 					return res.negotiate(err);
+ 				}
+
+ 				return res.json
+ 			})
+ 		}
  };
 

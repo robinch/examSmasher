@@ -46,6 +46,10 @@
     margin-left: 20px;
 }
 
-#sidebarForm .bright-text {
+#sidebar-wrapper .bright-text {
     color: white;
+}
+
+#sidebar-wrapper {
+    overflow: scroll;
 }
