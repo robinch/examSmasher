@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/angular-toastr.css">
+  <link rel="stylesheet" href="/styles/bootstrap-3.3.5.css">
+  <link rel="stylesheet" href="/styles/custom.css">
+  <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/rdash.css">
+  <link rel="stylesheet" href="/styles/simple-sidebar.css">
+  <!--STYLES END-->
+
+  <!-- A bit of a quick fix -->
+  <script type="text/javascript">
+    window.SAILS_LOCALS = {
+      _csrf: '<%= _csrf %>',
+      me: <%- JSON.stringify(me) %>
+    };
+  </script>
+</head>
+<body ng-app="DashboardModule" ng-controller="DashboardController" ng-cloak>
+
+  <div id="page-wrapper">
+
+    <!-- S I D E B A R -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+      <li>
+          <!-- The Weird form-->
+          <form ng-submit="submitSidebarFormAdd()" class="sidebar-form">
+
+            <div class="row">
+
+              <h4 class="bright-text">Add a course</h4>
+              <!-- Text Courses-->
+              <h5 class="bright-text">Course Id</h5>
+              <div class="control-group form-group col-md-12"
+              ng-class="{'has-error':sideBar.coursId.$invalid &&
+              sideBar.courseId.$dirty}">
+              <input type="text" class="form-control text-rounded" placeholder="e.g. ID2200" name="courseId" ng-model="sidebar.courseId" required>
+          
+              </div>
+              <!-- Text Courses-->
+              <h5 class="bright-text">Course name</h5>
+              <div class="control-group form-group col-md-12"
+              ng-class="{'has-error':sideBar.coursId.$invalid &&
+              sideBar.courseId.$dirty}">
+              <input type="text" class="form-control text-rounded" placeholder="e.g. Operating Systems" name="name" ng-model="sidebar.name" required>
+
+              </div>
+              <!-- Add button -->
+              <div class="control-group form-group col-md-6">
+              <button class="btn btn-success btn-lg btn-block" type="submit">
+                Add
+              </button>
+              </div>
+  
+
+              <!-- Remove button -->
+              <!--
+              <div class="control-group form-group col-md-6">
+              <button class="btn btn-danger btn-lg btn-block" ng-click="submitSidebarFormRemove(sideBar)">Rem</button> 
+              </div>
+              -->
+          </div>
+        </form>
+      </li>
+        <li class="sidebar-brand">
+          <h1>Courses</h1>
+        </li>
+        <li ng-repeat="course in courses">
+          <a ng-click="openCourse(course)">{{course.courseId}}</a>
+        </li>
+
+    </ul>
+
+  </div>
+  <!-- S I D E B A R   E N D-->
+
+
+  <!-- T I T L E   B A R -->
+
+  <div id="content-wrapper">
+    <div class="page-content">
+
+      <!-- Header Bar -->
+      <div class="row header">
+        <div class="col-xs-12">
+          <div class="user pull-right">
+            <a class="logout" href="/logout"> logout </a>
+          </div>
+          <div class="meta">
+            <div class="page">
+              {{me.name}}
+            </div>
+            <div class="breadcrumb-links">
+              Beat those courses
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Header Bar -->
+
+    <div class="note-wrapper">
+    <form class="note-form">
+      <input type="text" ng-model="formNotesText" rows="5">
+      <button class="btn" ng-click="addNote()"><i class="icon-plus"></i>Add</button>
+    </form>
+        <ul class="note-list">
+        <li><div class="CourseDesc">
+          
+        <h1>{{currentCourse.name}}</h1>
+          
+        </div>
+        <li ng-repeat="note in notes track by $index">{{note.text}}
+        </li>
+        </ul>
+    </div>
+    </div><!-- End Page Content -->
+
+
+
+  </div><!-- End Content Wrapper -->
+</div>
+
+
+<!--SCRIPTS-->
+<script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/dependencies/angular-1.4.7.js"></script>
+<script src="/js/dependencies/angular-cookies.js"></script>
+<script src="/js/dependencies/angular-toastr.tpls.js"></script>
+<script src="/js/dependencies/compareTo.module.js"></script>
+<script src="/js/dependencies/jquery.js"></script>
+<script src="/js/dependencies/ui-bootstrap-tpls-0.14.3.js"></script>
+<script src="/js/public/module/HomepageModule.js"></script>
+<script src="/js/public/module/SignupModule.js"></script>
+<script src="/js/private/module/DashboardModule.js"></script>
+<script src="/js/private/controller/DashboardController.js"></script>
+<script src="/js/public/controller/HomepageController.js"></script>
+<script src="/js/public/controller/SignupController.js"></script>
+<!--SCRIPTS END-->
+
+</body>
+</html>
